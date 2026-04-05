@@ -1,223 +1,283 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SynthCore AI | Enterprise Synthetic Data Factory</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynthCore AI | Autonomous Synthetic Data Factory</title>
+    <meta name="description" content="SynthCore AI transforms unstructured documents into Gold-Standard synthetic training data. One-time license. No cloud dependency. Full privacy.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-      :root {
-        --primary: #00f2ff;
-        --secondary: #7000ff;
-        --bg: #050505;
-        --text: #ffffff;
-        --glass: rgba(255, 255, 255, 0.05);
-        --border: rgba(255, 255, 255, 0.1);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family:
-          "Inter",
-          -apple-system,
-          BlinkMacSystemFont,
-          sans-serif;
-      }
-
-      body {
-        background-color: var(--bg);
-        color: var(--text);
-        overflow-x: hidden;
-        line-height: 1.6;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      /* Hero Section */
-      header {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background: radial-gradient(
-          circle at center,
-          rgba(112, 0, 255, 0.15) 0%,
-          transparent 70%
-        );
-      }
-
-      .hero-img {
-        width: 300px;
-        margin-bottom: 2rem;
-        filter: drop-shadow(0 0 20px var(--primary));
-        animation: float 6s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --accent: #ff006e;
+            --bg: #050510;
+            --card: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08);
+            --text: #e0e0e0;
+            --heading: #ffffff;
         }
-        50% {
-          transform: translateY(-20px);
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.7; overflow-x:hidden; }
+        .container { max-width:1100px; margin:0 auto; padding:0 24px; }
+        a { color:var(--primary); text-decoration:none; }
+        h1,h2,h3 { color:var(--heading); }
+
+        /* NAV */
+        nav { padding:20px 0; display:flex; justify-content:space-between; align-items:center; }
+        nav .logo { font-size:1.4rem; font-weight:900; }
+        nav .logo span { background:linear-gradient(90deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        nav .cta-sm { padding:10px 24px; border-radius:50px; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:#000; font-weight:700; font-size:0.9rem; }
+
+        /* HERO */
+        .hero { text-align:center; padding:100px 0 80px; background:radial-gradient(ellipse at center, rgba(112,0,255,0.12) 0%, transparent 70%); }
+        .hero h1 { font-size:3.5rem; font-weight:900; margin-bottom:16px; }
+        .hero h1 span { background:linear-gradient(90deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .hero p { font-size:1.2rem; max-width:650px; margin:0 auto 40px; color:rgba(255,255,255,0.6); }
+        .hero .btn { display:inline-block; padding:16px 40px; border-radius:50px; font-weight:700; font-size:1.1rem; transition:0.3s; }
+        .hero .btn-primary { background:linear-gradient(90deg,var(--primary),var(--secondary)); color:#000; box-shadow:0 10px 40px rgba(0,242,255,0.25); }
+        .hero .btn-primary:hover { transform:scale(1.05); box-shadow:0 15px 50px rgba(0,242,255,0.4); }
+
+        /* SECTION */
+        section { padding:80px 0; }
+        .section-title { text-align:center; margin-bottom:50px; }
+        .section-title h2 { font-size:2.2rem; margin-bottom:12px; }
+        .section-title p { color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto; }
+
+        /* WHAT IS */
+        .what-is { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:40px; margin:0 auto; max-width:900px; }
+        .what-is h3 { color:var(--primary); margin-bottom:12px; font-size:1.4rem; }
+
+        /* FEATURES GRID */
+        .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; }
+        .f-card { background:var(--card); border:1px solid var(--border); padding:32px; border-radius:16px; transition:0.3s; }
+        .f-card:hover { border-color:var(--primary); transform:translateY(-6px); }
+        .f-card .icon { font-size:2.5rem; margin-bottom:16px; }
+        .f-card h3 { margin-bottom:8px; font-size:1.2rem; }
+
+        /* COMPARISON TABLE */
+        .comp-table { width:100%; border-collapse:collapse; margin-top:30px; }
+        .comp-table th, .comp-table td { padding:14px 18px; text-align:left; border-bottom:1px solid var(--border); font-size:0.95rem; }
+        .comp-table th { color:var(--primary); font-weight:700; background:rgba(0,242,255,0.05); }
+        .comp-table tr:hover { background:rgba(255,255,255,0.02); }
+        .check { color:#00ff88; }
+        .cross { color:#ff4444; }
+        .highlight-col { background:rgba(0,242,255,0.08) !important; }
+
+        /* PRICING */
+        .pricing-box { text-align:center; background:linear-gradient(145deg,#111,#0a0a15); padding:48px; border-radius:24px; border:1px solid var(--secondary); max-width:500px; margin:0 auto; }
+        .pricing-box .price { font-size:3.5rem; font-weight:900; color:var(--heading); margin:16px 0; }
+        .pricing-box ul { list-style:none; text-align:left; margin:24px 0; }
+        .pricing-box li { padding:8px 0; border-bottom:1px solid var(--border); }
+        .pricing-box li::before { content:"✓ "; color:var(--primary); font-weight:700; }
+
+        /* CTA */
+        .final-cta { text-align:center; padding:100px 0; background:radial-gradient(ellipse at center, rgba(255,0,110,0.08) 0%, transparent 70%); }
+        .final-cta h2 { font-size:2.5rem; margin-bottom:16px; }
+        .final-cta p { color:rgba(255,255,255,0.5); margin-bottom:32px; }
+
+        /* FOOTER */
+        footer { padding:40px 0; text-align:center; border-top:1px solid var(--border); color:rgba(255,255,255,0.3); font-size:0.85rem; }
+
+        @media(max-width:768px) {
+            .hero h1 { font-size:2.2rem; }
+            .comp-table { font-size:0.8rem; }
+            .comp-table th, .comp-table td { padding:8px; }
         }
-      }
-
-      h1 {
-        font-size: 4rem;
-        font-weight: 900;
-        background: linear-gradient(to right, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 1rem;
-      }
-
-      p.subtitle {
-        font-size: 1.5rem;
-        color: rgba(255, 255, 255, 0.7);
-        max-width: 700px;
-        margin-bottom: 3rem;
-      }
-
-      .btn {
-        padding: 1rem 2.5rem;
-        font-size: 1.1rem;
-        font-weight: 700;
-        text-decoration: none;
-        border-radius: 50px;
-        transition: 0.3s;
-        cursor: pointer;
-        border: none;
-      }
-
-      .btn-primary {
-        background: linear-gradient(to right, var(--primary), var(--secondary));
-        color: black;
-        box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
-      }
-
-      .btn-primary:hover {
-        transform: scale(1.05);
-        box-shadow: 0 15px 40px rgba(0, 242, 255, 0.5);
-      }
-
-      /* Features */
-      .features {
-        padding: 100px 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-
-      .feature-card {
-        background: var(--glass);
-        border: 1px solid var(--border);
-        padding: 2.5rem;
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-        transition: 0.3s;
-      }
-
-      .feature-card:hover {
-        border-color: var(--primary);
-        transform: translateY(-10px);
-      }
-
-      .feature-card h3 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-
-      /* Pricing Area */
-      .pricing {
-        text-align: center;
-        padding: 100px 0;
-      }
-
-      .price-box {
-        display: inline-block;
-        background: linear-gradient(145deg, #111, #050505);
-        padding: 3rem;
-        border-radius: 30px;
-        border: 1px solid var(--secondary);
-        margin-top: 2rem;
-      }
-
-      .price {
-        font-size: 3.5rem;
-        font-weight: 900;
-        margin: 1rem 0;
-      }
-
-      footer {
-        padding: 50px 0;
-        text-align: center;
-        border-top: 1px solid var(--border);
-        color: rgba(255, 255, 255, 0.4);
-      }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
+<div class="container">
+    <nav>
+        <div class="logo">🏭 <span>SynthCore AI</span></div>
+        <a href="mailto:kishansudhan08@gmail.com?subject=SynthCore%20AI%20Access%20Request" class="cta-sm">Get Access →</a>
+    </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
     <div class="container">
-      <header>
-        <h1>SynthCore AI</h1>
-        <p class="subtitle">
-          The Industrial Intelligence Pipeline. Transform unstructured documents
-          into Gold-Standard synthetic training data autonomously.
-        </p>
-        <div class="cta">
-          <a href="#" class="btn btn-primary">Download v15.0 Enterprise</a>
-        </div>
-      </header>
-
-      <section id="features" class="features">
-        <div class="feature-card">
-          <h3>🧠 AI Data Strategist</h3>
-          <p>
-            Autonomous folder scanning that discovers your data's hidden value.
-            It identifies complex scenarios and multiplies your generation queue
-            automatically.
-          </p>
-        </div>
-        <div class="feature-card">
-          <h3>🧬 Swarm Architecture</h3>
-          <p>
-            Multi-agent "Generator + Judge" pipeline. Every record is verified
-            for reasoning, accuracy, and complexity before it hits your dataset.
-          </p>
-        </div>
-        <div class="feature-card">
-          <h3>📄 Universal Shredder</h3>
-          <p>
-            Input messy PDFs, Word docs, CSVs, or Markdowns. SynthCore extracts
-            the "Knowledge Essence" and converts it into structured JSONL
-            assets.
-          </p>
-        </div>
-      </section>
-
-      <section class="pricing">
-        <h2>Ready to Scale your AI?</h2>
-        <div class="price-box">
-          <p>Commercial License</p>
-          <div class="price">$299.00</div>
-          <p>Unlimited Lifetime Access</p>
-          <br />
-          <a href="#" class="btn btn-primary">Get Access Now</a>
-        </div>
-      </section>
-
-      <footer>
-        <p>&copy; 2026 SynthCore AI Enterprise. All rights reserved.</p>
-      </footer>
+        <h1><span>SynthCore AI</span></h1>
+        <p>The autonomous data factory that turns raw documents and URLs into Gold-Standard synthetic training data for LLMs. No cloud. No monthly fees. You own it.</p>
+        <a href="mailto:kishansudhan08@gmail.com?subject=SynthCore%20AI%20Purchase%20Inquiry" class="btn btn-primary">Request Access — $299</a>
     </div>
-  </body>
+</section>
+
+<!-- WHAT IS SYNTHETIC DATA -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>What is Synthetic Data?</h2>
+            <p>And why does every AI company need it in 2026</p>
+        </div>
+        <div class="what-is">
+            <h3>❓ The Problem</h3>
+            <p>Training AI models requires massive datasets. But real data is <strong>expensive</strong> (manual labeling costs $5-20 per record), <strong>slow</strong> (months to collect), and <strong>dangerous</strong> (privacy violations, PII exposure, GDPR fines).</p>
+            <br>
+            <h3>💡 The Solution</h3>
+            <p><strong>Synthetic data</strong> is AI-generated training data that mirrors the statistical patterns of real data — without containing any real personal information. It's the "Digital Twin" of your dataset: structurally identical, legally safe, and infinitely scalable. Gartner predicts that by 2026, <strong>60% of data used for AI will be synthetic</strong>.</p>
+            <br>
+            <h3>🏭 What SynthCore AI Does</h3>
+            <p>SynthCore AI is a <strong>self-hosted engine</strong> that reads your documents (PDFs, Markdown, code, websites) and autonomously generates thousands of high-quality Q&A pairs, reasoning chains, and instruction-following records — ready for fine-tuning GPT, Llama, Mistral, or any LLM.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>Core Features</h2>
+            <p>Everything you need to build premium AI training datasets</p>
+        </div>
+        <div class="features">
+            <div class="f-card">
+                <div class="icon">🌐</div>
+                <h3>Universal URL Harvester</h3>
+                <p>Paste any GitHub repo or website URL. SynthCore downloads, converts to Markdown, and prepares it for generation — zero manual work.</p>
+            </div>
+            <div class="f-card">
+                <div class="icon">🧠</div>
+                <h3>AI Data Strategist</h3>
+                <p>Autonomous folder scanning that reads your raw data and recommends generation scenarios. It discovers value you didn't know existed.</p>
+            </div>
+            <div class="f-card">
+                <div class="icon">🧬</div>
+                <h3>Multi-Judge Swarm</h3>
+                <p>Every record passes through a Generator → Judge pipeline. Bad data is filtered. Only Gold-Standard records survive to your dataset.</p>
+            </div>
+            <div class="f-card">
+                <div class="icon">📄</div>
+                <h3>Universal Document Shredder</h3>
+                <p>Ingest PDFs, Word docs, CSVs, Markdown, and code files. SynthCore extracts the "Knowledge Essence" from any format.</p>
+            </div>
+            <div class="f-card">
+                <div class="icon">🔒</div>
+                <h3>PII Scrubbing Engine</h3>
+                <p>Built-in Microsoft Presidio integration automatically detects and removes personal information before export. GDPR-safe by default.</p>
+            </div>
+            <div class="f-card">
+                <div class="icon">☁️</div>
+                <h3>One-Click Cloud Push</h3>
+                <p>Export your datasets directly to Hugging Face Hub with a single click. Share with the world or keep them private.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>SynthCore AI vs. The Giants</h2>
+            <p>Why pay $10,000+/year when you can own the engine?</p>
+        </div>
+        <table class="comp-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Gretel.ai</th>
+                    <th>Tonic.ai</th>
+                    <th>Mostly AI</th>
+                    <th class="highlight-col">SynthCore AI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pricing</strong></td>
+                    <td>Custom Enterprise ($$$)</td>
+                    <td>Custom Enterprise ($$$)</td>
+                    <td>Custom Enterprise ($$$)</td>
+                    <td class="highlight-col"><strong>$299 one-time</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Self-Hosted / Local</strong></td>
+                    <td class="cross">✗ Cloud only</td>
+                    <td class="cross">✗ Cloud only</td>
+                    <td class="cross">✗ Cloud only</td>
+                    <td class="highlight-col check">✓ 100% Local</td>
+                </tr>
+                <tr>
+                    <td><strong>URL Ingestion</strong></td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="highlight-col check">✓ GitHub + Web</td>
+                </tr>
+                <tr>
+                    <td><strong>Multi-Agent QA</strong></td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="cross">✗</td>
+                    <td class="highlight-col check">✓ Swarm Judges</td>
+                </tr>
+                <tr>
+                    <td><strong>Unstructured Docs (PDF/DOCX)</strong></td>
+                    <td class="cross">✗ Tabular only</td>
+                    <td class="cross">✗ DB-focused</td>
+                    <td class="cross">✗ Tabular only</td>
+                    <td class="highlight-col check">✓ Any format</td>
+                </tr>
+                <tr>
+                    <td><strong>BYOM (Bring Your Own Model)</strong></td>
+                    <td class="cross">✗ Their models</td>
+                    <td class="cross">✗ Their models</td>
+                    <td class="cross">✗ Their models</td>
+                    <td class="highlight-col check">✓ Any OpenAI-compatible API</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Privacy</strong></td>
+                    <td>Data leaves your network</td>
+                    <td>Data leaves your network</td>
+                    <td>Data leaves your network</td>
+                    <td class="highlight-col"><strong>Data never leaves your machine</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>Simple Pricing</h2>
+            <p>No subscriptions. No hidden fees. One payment. Lifetime access.</p>
+        </div>
+        <div class="pricing-box">
+            <p style="color:var(--primary);font-weight:700;">COMMERCIAL LICENSE</p>
+            <div class="price">$299</div>
+            <p style="color:rgba(255,255,255,0.5);">One-time payment</p>
+            <ul>
+                <li>Full source code access</li>
+                <li>V16 Harvest Edition (latest)</li>
+                <li>URL Harvester (GitHub + Web)</li>
+                <li>Multi-Agent Swarm Engine</li>
+                <li>PII Scrubbing (Presidio)</li>
+                <li>Hugging Face Cloud Push</li>
+                <li>Unlimited generation — no caps</li>
+                <li>Free updates for 1 year</li>
+            </ul>
+            <a href="mailto:kishansudhan08@gmail.com?subject=SynthCore%20AI%20Purchase%20-%20$299%20License&body=Hi%2C%20I%20would%20like%20to%20purchase%20a%20SynthCore%20AI%20license.%20Please%20send%20me%20the%20payment%20details." class="btn btn-primary" style="display:inline-block;padding:14px 36px;border-radius:50px;background:linear-gradient(90deg,var(--primary),var(--secondary));color:#000;font-weight:700;">Buy Now — $299</a>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+    <div class="container">
+        <h2>Ready to build your AI's training data?</h2>
+        <p>Join researchers and startups who are using SynthCore AI to generate premium datasets at a fraction of the cost.</p>
+        <a href="mailto:kishansudhan08@gmail.com?subject=SynthCore%20AI%20Demo%20Request" class="btn btn-primary" style="display:inline-block;padding:14px 36px;border-radius:50px;background:linear-gradient(90deg,var(--primary),var(--secondary));color:#000;font-weight:700;">Request a Demo →</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 SynthCore AI. Built for the AI economy.</p>
+    </div>
+</footer>
+
+</body>
 </html>
